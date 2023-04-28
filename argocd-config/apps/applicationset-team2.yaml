@@ -11,7 +11,7 @@ spec:
       - path: apps/*
   template:
     metadata:
-      name: "{{path[1]}}"
+      name: "{{path[1]}}-team2"
     spec:
       project: team2
       source:
