@@ -4,9 +4,6 @@ metadata:
   name: team2
   namespace: argocd
 spec:
-  clusterResourceWhitelist:
-  - group: ''
-    kind: Namespace
   namespaceResourceBlacklist:
   - group: ''
     kind: ResourceQuota
