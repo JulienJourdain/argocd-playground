@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: applicationset-team2
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/JulienJourdain/argocd-playground-team2.git
+      revision: HEAD
+      directories:
+      - path: apps/*
+  template:
+    metadata:
+      name: "{{path[0]}}"
+    spec:
+      project: team2
+      source:
+        repoURL: https://github.com/JulienJourdain/argocd-playground-team2.git
+        targetRevision: HEAD
+        path: "{{path}}"
+      destination:
+        name: in-cluster
+        namespace: team2-apps
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true

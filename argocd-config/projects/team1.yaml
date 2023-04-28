@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: team1
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: team1-apps
+    server: '*'
+  sourceRepos:
+  - https://github.com/JulienJourdain/argocd-playground-team1.git
